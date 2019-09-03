@@ -8,6 +8,8 @@ import com.example.party2.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -30,5 +32,10 @@ public class MemberServiceImpl implements MemberService {
                 .firstName(member.getFirstName())
                 .lastName(member.getLastName())
                 .build();
+    }
+
+    @Override
+    public List<Member> getMembers() {
+        return memberRepository.findAll();
     }
 }
