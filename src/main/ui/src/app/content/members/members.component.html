@@ -1,3 +1,30 @@
-<p>
-  members works!
-</p>
+<div class="container">
+  <table class="table table-hover table-striped">
+
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let member of members">
+    <tr>
+      <td>{{member.id}}</td>
+      <td>{{member.email}}</td>
+      <td>{{member.password}}</td>
+      <td>{{member.firstName}}</td>
+      <td>{{member.lastName}}</td>
+      <td>
+<!--        <button class="delete" title="delete hero"-->
+<!--                (click)="delete(user)">x</button>-->
+      </td>
+    </tr>
+
+    </tbody>
+
+  </table>
+</div>
+
