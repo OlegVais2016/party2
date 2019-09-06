@@ -1,0 +1,22 @@
+<h2>Add new</h2>
+
+<div>
+  <label>Email:
+    <input #email />
+  </label>
+  <label>Password:
+    <input #password />
+  </label>
+  <label>First name:
+    <input #firstName />
+  </label>
+  <label>Last name:
+    <input #lastName />
+  </label>
+
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(email.value,password.value,firstName.value,lastName.value);
+  email.value=''; password.value=''; firstName.value=''; lastName.value=''">
+    add
+  </button>
+</div>

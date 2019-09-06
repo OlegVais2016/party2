@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/member")
+@RequestMapping("/api")
 public class MemberController {
 
     @Autowired
     private MemberService memberService;
 
-    @PostMapping("/save")
+    @PostMapping("/members")
     public MemberResponse saveMember(@RequestBody MemberRequest memberRequest){
         return memberService.saveMember(memberRequest);
     }

@@ -15,11 +15,16 @@ export class MembersComponent implements OnInit {
   getMembers(){
     return this.memberHttpService
       .getMembersObservable()
-      .subscribe(data => this.members == data)
+      .subscribe(data => this.members = data);
+  }
+
+  delete(member: Member): void {
+    this.members = this.members.filter(h => h !== member);
+    this.memberHttpService.deleteMember(member).subscribe();
   }
 
   ngOnInit() {
-    this.getMembers()
+    this.getMembers();
   }
 
 }

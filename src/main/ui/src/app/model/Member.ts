@@ -1,4 +1,4 @@
-export default class User {
+export default class Member {
   private _id: number;
   private _email: string;
   private _password: string;
@@ -13,7 +13,6 @@ export default class User {
     this._firstName = firstName;
     this._lastName = lastName;
   }
-
 
   get id(): number {
     return this._id;
