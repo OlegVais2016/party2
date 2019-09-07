@@ -1,7 +1,7 @@
 package com.example.party2.service.impl;
 
-import com.example.party2.model.dto.MemberRequest;
-import com.example.party2.model.dto.MemberResponse;
+import com.example.party2.model.dto.member.MemberRequest;
+import com.example.party2.model.dto.member.MemberResponse;
 import com.example.party2.model.entity.Member;
 import com.example.party2.repository.MemberRepository;
 import com.example.party2.service.MemberService;

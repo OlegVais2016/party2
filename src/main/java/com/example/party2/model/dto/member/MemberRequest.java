@@ -1,4 +1,4 @@
-package com.example.party2.model.dto;
+package com.example.party2.model.dto.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class MemberResponse {
 
-    private Long memberId;
+public class MemberRequest {
+
+    private String email;
+    private String password;
     private String firstName;
     private String lastName;
 }
