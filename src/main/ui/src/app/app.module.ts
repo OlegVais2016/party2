@@ -10,6 +10,7 @@ import { MembersComponent } from './content/members/members.component';
 import { EventsComponent } from './content/events/events.component';
 import {HttpClientModule} from "@angular/common/http";
 import { BecomeMemberComponent } from './content/become-member/become-member.component';
+import { CreateEventComponent } from './content/create-event/create-event.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BecomeMemberComponent } from './content/become-member/become-member.com
     ContentComponent,
     MembersComponent,
     EventsComponent,
-    BecomeMemberComponent
+    BecomeMemberComponent,
+    CreateEventComponent
   ],
   imports: [
     BrowserModule,

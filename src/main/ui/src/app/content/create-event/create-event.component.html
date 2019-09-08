@@ -1,0 +1,40 @@
+<div class="font-weight-bold my-4 text-center">
+  <h2>Create party</h2>
+
+  <div>
+    <div>
+      <label>First Name:
+        <input #firstName />
+        <!--<input class="form-control" name="title" [(ngModel)]="firstName" />-->
+      </label>
+    </div>
+    <div>
+      <label>Title:
+        <input #title />
+      </label>
+    </div>
+    <div>
+      <label>City:
+        <input #city />
+      </label>
+    </div>
+    <div>
+      <label>Street:
+        <input #street />
+      </label>
+    </div>
+    <div>
+      <label>House:
+        <input #house />
+      </label>
+    </div>
+  </div>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <div class="font-weight-bold my-4 text-center">
+    <button (click)="add(firstName.value,title.value,city.value,street.value,house.value);
+  firstName.value=''; title.value=''; city.value=''; street.value=''; house.value=''">
+      add
+    </button>
+  </div>
+</div>
+

@@ -1,22 +1,33 @@
+<div class="font-weight-bold my-4 text-center">
 <h2>Add new</h2>
 
 <div>
+  <div>
   <label>Email:
     <input #email />
   </label>
+  </div>
+  <div>
   <label>Password:
     <input #password />
   </label>
+  </div>
+  <div>
   <label>First name:
     <input #firstName />
   </label>
+  </div>
+  <div>
   <label>Last name:
     <input #lastName />
   </label>
-
+</div>
+</div>
   <!-- (click) passes input value to add() and then clears the input -->
+  <div class="font-weight-bold my-4 text-center">
   <button (click)="add(email.value,password.value,firstName.value,lastName.value);
   email.value=''; password.value=''; firstName.value=''; lastName.value=''">
     add
   </button>
+  </div>
 </div>

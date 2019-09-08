@@ -20,4 +20,6 @@ export class BecomeMemberComponent implements OnInit {
         this.members.push(member);
       });
   }
+
+
 }
