@@ -27,7 +27,4 @@ public class EventController {
     }
 
 }
-    /*@GetMapping("/members")
-    public List<Member> getMembers(){
-        return memberService.getMembers();
-    }*/
+

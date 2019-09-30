@@ -38,4 +38,20 @@ public class MemberServiceImpl implements MemberService {
     public List<Member> getMembers() {
         return memberRepository.findAll();
     }
+
+    @Override
+    public MemberResponse getByName(String firstName) {
+        Member member =  memberRepository.findByName(firstName);
+        return MemberResponse.builder()
+                .memberId(member.getMemberId())
+                .firstName(member.getFirstName())
+                .lastName(member.getLastName())
+                .build();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        memberRepository.deleteById(id);
+    }
+
 }

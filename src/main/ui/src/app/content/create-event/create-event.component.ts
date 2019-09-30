@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import Member from "../../model/Member";
 
 import Event from "../../model/Event";
@@ -12,13 +12,15 @@ import {EventHttpService} from "../../service/event-http.service";
 })
 export class CreateEventComponent implements OnInit {
   events: Event[];
+  @Input() member:Member;
   constructor(private eventHttpService: EventHttpService) { }
 
   ngOnInit() {
   }
-  add(firstName: string, title: string, city: string, street: string, house: string): void {
+  add(memberId: number, title: string, city: string, street: string, house: string): void {
 
-    this.eventHttpService.addEvent({firstName,title, city, street,house } as Event)
+    this.eventHttpService.addEvent({title, city, street,house } as Event,{} as Member)
+
       .subscribe(event => {
         this.events.push(event);
       });

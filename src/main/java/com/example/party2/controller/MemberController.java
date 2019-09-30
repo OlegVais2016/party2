@@ -25,4 +25,14 @@ public class MemberController {
     public List<Member> getMembers(){
         return memberService.getMembers();
     }
+
+    @GetMapping("/memberbyname")
+    public MemberResponse getByName(@RequestParam String firstName){
+        return memberService.getByName(firstName);
+    }
+
+    @PostMapping("/members/{id}")
+    public void delete(@PathVariable Long id){
+        memberService.deleteById(id);
+    }
 }

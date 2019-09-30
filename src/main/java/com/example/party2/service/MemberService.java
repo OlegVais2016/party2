@@ -9,4 +9,6 @@ import java.util.List;
 public interface MemberService {
     MemberResponse saveMember(MemberRequest memberRequest);
     List<Member> getMembers();
+    MemberResponse getByName(String firstName);
+    void deleteById(Long id);
 }

@@ -21,8 +21,10 @@ export class EventHttpService {
   getEventsObservable(): Observable<Event[]> {
     return this.httpClient.get<Event[]>(this.eventsUrl);
   }
-  addEvent (event: Event): Observable<Event> {
-    return this.httpClient.post<Event>(this.eventsUrl, event, this.httpOptions);
+  addEvent (event: Event, member: Member | number): Observable<Event> {
+    const id = typeof member === 'number' ? member : member.id;
+    const url = `${this.eventsUrl}/${id}`;
+    return this.httpClient.post<Event>(url, event, this.httpOptions);
   }
 
 
