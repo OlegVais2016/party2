@@ -1,7 +1,8 @@
 <div id="search-component">
   <h4><label for="search-box">Search member</label></h4>
 
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  <input #searchBox id="search-box"
+         placeholder="find drinking companion" (input)="search(searchBox.value)" />
 
   <ul class="search-result">
     <li *ngFor="let member of members$ | async" >

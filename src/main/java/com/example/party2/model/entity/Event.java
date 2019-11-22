@@ -3,6 +3,7 @@ package com.example.party2.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -17,10 +18,13 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventId;
+
     @OneToOne
     private Member arranger;
     private String title;
     private String city;
     private String street;
     private String house;
+    @OneToMany
+    private List<Member> participants;
 }

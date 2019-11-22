@@ -21,9 +21,16 @@ public class EventController {
                                      @RequestBody EventRequest eventRequest){
         return  eventService.createEvent(memberId, eventRequest);
     }
+
     @GetMapping("/events")
     public List<Event> getEvents(){
         return eventService.getEvents();
+    }
+    @PostMapping("events/sub/{memberId}/{eventId}")
+    public String subscribeToEvent(@PathVariable Long memberId,
+                                   @PathVariable Long eventId) throws Exception {
+        eventService.subscribeToEvent(memberId,eventId);
+        return "Fine";
     }
 
 }

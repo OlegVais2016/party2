@@ -10,4 +10,5 @@ public interface EventService {
 
     EventResponse createEvent(Long memberId, EventRequest eventRequest);
     List<Event> getEvents();
+    void subscribeToEvent(Long memberId, Long eventId) throws Exception;
 }

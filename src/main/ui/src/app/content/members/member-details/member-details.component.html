@@ -1,3 +1,13 @@
-<p>
-  member-details works!
-</p>
+
+<div *ngIf="member">
+
+  <h2>{{member.firstName | uppercase}} Details</h2>
+  <div><span>id: </span>{{member.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="member.firstName" placeholder="name"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+
+</div>
