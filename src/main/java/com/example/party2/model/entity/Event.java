@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @ToString
 @Builder
-@Table(name="event")
+@Table
 public class Event {
 
     @Id
@@ -25,6 +25,6 @@ public class Event {
     private String city;
     private String street;
     private String house;
-    @OneToMany
+    @ManyToMany
     private List<Member> participants;
 }

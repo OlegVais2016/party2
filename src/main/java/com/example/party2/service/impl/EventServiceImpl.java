@@ -1,5 +1,7 @@
 package com.example.party2.service.impl;
 
+import com.example.party2.exception.EventNotFoundException;
+import com.example.party2.exception.MemberNotFoundException;
 import com.example.party2.model.dto.event.EventRequest;
 import com.example.party2.model.dto.event.EventResponse;
 import com.example.party2.model.entity.Event;
@@ -27,9 +29,10 @@ public class EventServiceImpl implements EventService {
     @Override
     public EventResponse createEvent(Long memberId, EventRequest eventRequest) {
 
-        Optional<Member> member = memberRepository.findById(memberId);
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new MemberNotFoundException(memberId));
         Event event = Event.builder()
-                .arranger(member.get())
+                .arranger(member)
                 .title(eventRequest.getTitle())
                 .city(eventRequest.getCity())
                 .street(eventRequest.getStreet())
@@ -53,10 +56,13 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void subscribeToEvent(Long memberId, Long eventId) throws Exception {
+    public void subscribeToEvent(String email, Long eventId) {
 
-        Member member = Member.builder().memberId(memberId).build();
-        Event event = eventRepository.findById(eventId).orElseThrow(()->new Exception());
+        Member member = memberRepository.findByEmail(email);
+        /*Member member = memberRepository.findById(memberId)
+                .orElseThrow(()-> new MemberNotFoundException(memberId));*/
+        Event event = eventRepository.findById(eventId)
+                .orElseThrow(() -> new EventNotFoundException(eventId));
 
         List<Member> members = event.getParticipants();
        if(members == null){

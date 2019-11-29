@@ -26,10 +26,10 @@ public class EventController {
     public List<Event> getEvents(){
         return eventService.getEvents();
     }
-    @PostMapping("events/sub/{memberId}/{eventId}")
-    public String subscribeToEvent(@PathVariable Long memberId,
-                                   @PathVariable Long eventId) throws Exception {
-        eventService.subscribeToEvent(memberId,eventId);
+    @PostMapping("events/sub/{email}/{eventId}")
+    public String subscribeToEvent(@PathVariable String email,
+                                   @PathVariable Long eventId) {
+        eventService.subscribeToEvent(email,eventId);
         return "Fine";
     }
 

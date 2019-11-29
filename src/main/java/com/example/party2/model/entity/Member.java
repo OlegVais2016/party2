@@ -3,6 +3,7 @@ package com.example.party2.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -11,14 +12,14 @@ import javax.persistence.*;
 @Setter
 @ToString
 @Builder
-@Table(name="member")
+@Table
 public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
- //   @Column(nullable = false,unique = true)
+    @Column(nullable = false,unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -26,4 +27,6 @@ public class Member {
 
     private String firstName;
     private String lastName;
+
+
 }
