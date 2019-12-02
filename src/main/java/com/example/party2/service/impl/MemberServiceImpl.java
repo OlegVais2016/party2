@@ -1,9 +1,12 @@
 package com.example.party2.service.impl;
 
+import com.example.party2.model.dto.member.LoginRequest;
+import com.example.party2.model.dto.member.LoginResponse;
 import com.example.party2.model.dto.member.MemberRequest;
 import com.example.party2.model.dto.member.MemberResponse;
 import com.example.party2.model.entity.Member;
 import com.example.party2.repository.MemberRepository;
+import com.example.party2.repository.MemberSessionRepository;
 import com.example.party2.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,8 @@ import java.util.List;
 @Service
 public class MemberServiceImpl implements MemberService {
 
+    @Autowired
+    private MemberSessionRepository memberSessionRepository;
     @Autowired
     private MemberRepository memberRepository;
 
@@ -27,11 +32,18 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);
 
 
-        return MemberResponse.builder()
+    return MemberResponse.builder()
                 .memberId(member.getMemberId())
                 .firstName(member.getFirstName())
                 .lastName(member.getLastName())
                 .build();
+    }
+
+    @Override
+    public LoginResponse login(LoginRequest loginRequest) {
+        Member member = memberRepository.findByEmailAndPassword
+                (loginRequest.getEmail(), loginRequest.getPassword());
+        return null;
     }
 
     @Override

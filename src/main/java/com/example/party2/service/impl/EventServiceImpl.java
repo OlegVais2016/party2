@@ -59,8 +59,6 @@ public class EventServiceImpl implements EventService {
     public void subscribeToEvent(String email, Long eventId) {
 
         Member member = memberRepository.findByEmail(email);
-        /*Member member = memberRepository.findById(memberId)
-                .orElseThrow(()-> new MemberNotFoundException(memberId));*/
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new EventNotFoundException(eventId));
 
@@ -70,6 +68,11 @@ public class EventServiceImpl implements EventService {
             m.add(member);
             Event res1 = Event.builder()
                     .eventId(eventId)
+                    .arranger(event.getArranger())
+                    .title(event.getTitle())
+                    .city(event.getCity())
+                    .street(event.getStreet())
+                    .house(event.getHouse())
                     .participants(m)
                     .build();
             eventRepository.save(res1);
@@ -78,6 +81,11 @@ public class EventServiceImpl implements EventService {
         members.add(member);
         Event res = Event.builder()
                 .eventId(eventId)
+                .arranger(event.getArranger())
+                .title(event.getTitle())
+                .city(event.getCity())
+                .street(event.getStreet())
+                .house(event.getHouse())
                 .participants(members)
                 .build();
         eventRepository.save(res);

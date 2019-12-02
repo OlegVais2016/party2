@@ -1,5 +1,7 @@
 package com.example.party2.controller;
 
+import com.example.party2.model.dto.member.LoginRequest;
+import com.example.party2.model.dto.member.LoginResponse;
 import com.example.party2.model.dto.member.MemberRequest;
 import com.example.party2.model.dto.member.MemberResponse;
 import com.example.party2.model.entity.Member;
@@ -19,6 +21,11 @@ public class MemberController {
     @PostMapping("/members")
     public MemberResponse saveMember(@RequestBody MemberRequest memberRequest){
         return memberService.saveMember(memberRequest);
+    }
+
+    @PostMapping("/login")
+    public LoginResponse login(@RequestBody LoginRequest loginRequest){
+        return memberService.login(loginRequest);
     }
 
     @GetMapping("/members")
