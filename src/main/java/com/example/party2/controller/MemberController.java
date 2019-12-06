@@ -33,7 +33,7 @@ public class MemberController {
         return memberService.getMembers();
     }
 
-    @GetMapping("/memberbyname")
+    @GetMapping("/memberByName")
     public MemberResponse getByName(@RequestParam String firstName){
         return memberService.getByName(firstName);
     }
