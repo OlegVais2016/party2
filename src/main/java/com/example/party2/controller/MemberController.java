@@ -27,6 +27,11 @@ public class MemberController {
     public LoginResponse login(@RequestBody LoginRequest loginRequest){
         return memberService.login(loginRequest);
     }
+    @PutMapping("/logout")
+    public void logout(@RequestHeader("Authorization") String header) {
+
+        memberService.logout(header);
+    }
 
     @GetMapping("/members")
     public List<Member> getMembers(){

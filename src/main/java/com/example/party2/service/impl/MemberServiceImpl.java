@@ -67,6 +67,20 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
+    public void logout(String header) {
+
+        MemberSession memberSession = memberSessionRepository
+                .findBySessionIdAndAndIsValidTrue(header);
+        if(memberSession == null){
+            log.warn("Logout call - no session ID found = {}, after passing security filter. Exiting without an error", header);
+            throw new AuthenticationException("Username or password is incorrect");
+        }
+        memberSession.setIsValid(false);
+        memberSessionRepository.save(memberSession);
+        log.debug("Session ID = {} invalidated", header);
+    }
+
+    @Override
     public List<Member> getMembers() {
         return memberRepository.findAll();
     }

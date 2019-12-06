@@ -11,6 +11,7 @@ import java.util.List;
 public interface MemberService {
     MemberResponse saveMember(MemberRequest memberRequest);
     LoginResponse login(LoginRequest loginRequest);
+    void logout(String header);
     List<Member> getMembers();
     MemberResponse getByName(String firstName);
     void deleteById(Long id);
