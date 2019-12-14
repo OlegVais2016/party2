@@ -56,9 +56,9 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void subscribeToEvent(String email, Long eventId) {
+    public void subscribeToEvent(Member member, Long eventId) {
 
-        Member member = memberRepository.findByEmail(email);
+     //   Member member = memberRepository.findByEmail(email);
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new EventNotFoundException(eventId));
 

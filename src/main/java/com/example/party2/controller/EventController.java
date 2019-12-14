@@ -3,10 +3,13 @@ package com.example.party2.controller;
 import com.example.party2.model.dto.event.EventRequest;
 import com.example.party2.model.dto.event.EventResponse;
 import com.example.party2.model.entity.Event;
+import com.example.party2.model.entity.Member;
 import com.example.party2.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -26,11 +29,12 @@ public class EventController {
     public List<Event> getEvents(){
         return eventService.getEvents();
     }
-    @PostMapping("events/sub/{email}/{eventId}")
-    public String subscribeToEvent(@PathVariable String email,
+
+    @PostMapping("events/sub/me/{eventId}")
+    public String subscribeToEvent(@AuthenticationPrincipal Member member,
                                    @PathVariable Long eventId) {
-        eventService.subscribeToEvent(email,eventId);
-        return "Fine";
+        eventService.subscribeToEvent(member,eventId);
+        return "You are subscribed!";
     }
 
 }
