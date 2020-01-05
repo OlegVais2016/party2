@@ -19,10 +19,10 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-    @PostMapping("/events/{memberId}")
-    public EventResponse createEvent(@PathVariable Long memberId,
+    @PostMapping("/events/me")
+    public EventResponse createEvent(@AuthenticationPrincipal Member member,
                                      @RequestBody EventRequest eventRequest){
-        return  eventService.createEvent(memberId, eventRequest);
+        return  eventService.createEvent(member, eventRequest);
     }
 
     @GetMapping("/events")

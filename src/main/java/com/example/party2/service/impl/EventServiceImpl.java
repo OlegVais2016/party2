@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 @Slf4j
 @Service
 public class EventServiceImpl implements EventService {
@@ -23,14 +23,11 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private EventRepository eventRepository;
 
-    @Autowired
-    private MemberRepository memberRepository;
+
 
     @Override
-    public EventResponse createEvent(Long memberId, EventRequest eventRequest) {
+    public EventResponse createEvent(Member member, EventRequest eventRequest) {
 
-        Member member = memberRepository.findById(memberId)
-                .orElseThrow(() -> new MemberNotFoundException(memberId));
         Event event = Event.builder()
                 .arranger(member)
                 .title(eventRequest.getTitle())
@@ -58,7 +55,6 @@ public class EventServiceImpl implements EventService {
     @Override
     public void subscribeToEvent(Member member, Long eventId) {
 
-     //   Member member = memberRepository.findByEmail(email);
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new EventNotFoundException(eventId));
 

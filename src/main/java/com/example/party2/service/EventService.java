@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface EventService {
 
-    EventResponse createEvent(Long memberId, EventRequest eventRequest);
+    EventResponse createEvent(Member member, EventRequest eventRequest);
     List<Event> getEvents();
     void subscribeToEvent(Member member, Long eventId);
 }

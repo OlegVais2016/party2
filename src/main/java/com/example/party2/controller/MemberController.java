@@ -7,6 +7,7 @@ import com.example.party2.model.dto.member.MemberResponse;
 import com.example.party2.model.entity.Member;
 import com.example.party2.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 @RequestMapping("/api")
 public class MemberController {
 
+    
     @Autowired
     private MemberService memberService;
 
