@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -13,6 +16,8 @@ public class EventResponse {
 
     private String firstName;
     private String title;
+    private LocalDate date;
+    private LocalTime time;
     private String city;
     private String street;
     private String house;

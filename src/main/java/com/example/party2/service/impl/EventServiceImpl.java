@@ -31,6 +31,8 @@ public class EventServiceImpl implements EventService {
         Event event = Event.builder()
                 .arranger(member)
                 .title(eventRequest.getTitle())
+                .date(eventRequest.getDate())
+                .time(eventRequest.getTime())
                 .city(eventRequest.getCity())
                 .street(eventRequest.getStreet())
                 .house(eventRequest.getHouse())
@@ -41,6 +43,8 @@ public class EventServiceImpl implements EventService {
         return EventResponse.builder()
                 .firstName(event.getArranger().getFirstName())
                 .title(event.getTitle())
+                .date(event.getDate())
+                .time(event.getTime())
                 .city(event.getCity())
                 .street(event.getStreet())
                 .house(event.getHouse())
@@ -60,16 +64,18 @@ public class EventServiceImpl implements EventService {
 
         List<Member> members = event.getParticipants();
        if(members == null){
-            List<Member> m = new ArrayList<>();
-            m.add(member);
+            List<Member> memberList = new ArrayList<>();
+            memberList.add(member);
             Event res1 = Event.builder()
                     .eventId(eventId)
                     .arranger(event.getArranger())
                     .title(event.getTitle())
+                    .date(event.getDate())
+                    .time(event.getTime())
                     .city(event.getCity())
                     .street(event.getStreet())
                     .house(event.getHouse())
-                    .participants(m)
+                    .participants(memberList)
                     .build();
             eventRepository.save(res1);
         }
@@ -79,6 +85,8 @@ public class EventServiceImpl implements EventService {
                 .eventId(eventId)
                 .arranger(event.getArranger())
                 .title(event.getTitle())
+                .date(event.getDate())
+                .time(event.getTime())
                 .city(event.getCity())
                 .street(event.getStreet())
                 .house(event.getHouse())
