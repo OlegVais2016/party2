@@ -23,12 +23,16 @@ public class Event {
 
     @OneToOne
     private Member arranger;
+    @Convert(converter = EventStatusConverter.class)
+    private EventStatus eventStatus;
+    private EventType eventType;
     private String title;
     private LocalDate date;
     private LocalTime time;
     private String city;
     private String street;
-    private String house;
+    private String description;
+    private Integer entranceFee;
     @ManyToMany
     private List<Member> participants;
 }

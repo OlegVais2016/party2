@@ -31,7 +31,6 @@ public class MemberController {
     }
     @PutMapping("/logout")
     public void logout(@RequestHeader("Authorization") String header) {
-
         memberService.logout(header);
     }
 

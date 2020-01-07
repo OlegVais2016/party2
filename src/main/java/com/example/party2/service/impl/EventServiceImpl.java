@@ -1,13 +1,12 @@
 package com.example.party2.service.impl;
 
 import com.example.party2.exception.EventNotFoundException;
-import com.example.party2.exception.MemberNotFoundException;
 import com.example.party2.model.dto.event.EventRequest;
 import com.example.party2.model.dto.event.EventResponse;
 import com.example.party2.model.entity.Event;
+import com.example.party2.model.entity.EventStatus;
 import com.example.party2.model.entity.Member;
 import com.example.party2.repository.EventRepository;
-import com.example.party2.repository.MemberRepository;
 import com.example.party2.service.EventService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +30,14 @@ public class EventServiceImpl implements EventService {
         Event event = Event.builder()
                 .arranger(member)
                 .title(eventRequest.getTitle())
+                .eventStatus(EventStatus.PENDING)
+                .eventType(eventRequest.getEventType())
                 .date(eventRequest.getDate())
                 .time(eventRequest.getTime())
                 .city(eventRequest.getCity())
                 .street(eventRequest.getStreet())
-                .house(eventRequest.getHouse())
+                .description(eventRequest.getDescription())
+                .entranceFee(eventRequest.getEntranceFee())
                 .build();
 
         eventRepository.save(event);
@@ -43,11 +45,14 @@ public class EventServiceImpl implements EventService {
         return EventResponse.builder()
                 .firstName(event.getArranger().getFirstName())
                 .title(event.getTitle())
+                .eventStatus(event.getEventStatus())
+                .eventType(event.getEventType())
                 .date(event.getDate())
                 .time(event.getTime())
                 .city(event.getCity())
                 .street(event.getStreet())
-                .house(event.getHouse())
+                .description(event.getDescription())
+                .entranceFee(event.getEntranceFee())
                 .build();
     }
 
@@ -70,11 +75,13 @@ public class EventServiceImpl implements EventService {
                     .eventId(eventId)
                     .arranger(event.getArranger())
                     .title(event.getTitle())
+                    .eventType(event.getEventType())
                     .date(event.getDate())
                     .time(event.getTime())
                     .city(event.getCity())
                     .street(event.getStreet())
-                    .house(event.getHouse())
+                    .description(event.getDescription())
+                    .entranceFee(event.getEntranceFee())
                     .participants(memberList)
                     .build();
             eventRepository.save(res1);
@@ -89,7 +96,8 @@ public class EventServiceImpl implements EventService {
                 .time(event.getTime())
                 .city(event.getCity())
                 .street(event.getStreet())
-                .house(event.getHouse())
+                .description(event.getDescription())
+                .entranceFee(event.getEntranceFee())
                 .participants(members)
                 .build();
         eventRepository.save(res);

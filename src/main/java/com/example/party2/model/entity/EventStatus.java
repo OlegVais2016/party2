@@ -14,7 +14,8 @@ import java.util.Comparator;
 public enum EventStatus {
 
     PENDING(1,"pending"),
-    DONE(2,"done");
+    SUBSCRIPTION_CLOSED(2,"subscription closed"),
+    DONE(3,"done");
 
     private Integer id;
     private String name;

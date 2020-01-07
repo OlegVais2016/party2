@@ -1,5 +1,6 @@
 package com.example.party2.model.dto.event;
 
+import com.example.party2.model.entity.EventType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,9 +16,11 @@ import java.time.LocalTime;
 public class EventRequest {
 
     private String title;
+    private EventType eventType;
     private LocalDate date;
     private LocalTime time;
     private String city;
     private String street;
-    private String house;
+    private String description;
+    private Integer entranceFee;
 }
