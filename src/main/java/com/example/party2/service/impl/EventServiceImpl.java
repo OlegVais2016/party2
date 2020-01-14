@@ -1,6 +1,7 @@
 package com.example.party2.service.impl;
 
 import com.example.party2.exception.EventNotFoundException;
+import com.example.party2.exception.StatusDoNotMatchException;
 import com.example.party2.model.dto.event.EventRequest;
 import com.example.party2.model.dto.event.EventResponse;
 import com.example.party2.model.entity.Event;
@@ -66,6 +67,10 @@ public class EventServiceImpl implements EventService {
 
         Event event = eventRepository.findById(eventId)
                 .orElseThrow(() -> new EventNotFoundException(eventId));
+
+        if(!event.getEventStatus().equals(EventStatus.PENDING)){
+            throw new StatusDoNotMatchException();
+        }
 
         List<Member> members = event.getParticipants();
        if(members == null){

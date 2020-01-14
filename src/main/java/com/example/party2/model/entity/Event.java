@@ -21,7 +21,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventId;
 
-    @OneToOne
+    @ManyToOne
     private Member arranger;
     @Convert(converter = EventStatusConverter.class)
     private EventStatus eventStatus;
