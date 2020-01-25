@@ -16,7 +16,7 @@ public class CloseSubscribeController {
     @Autowired
     private CloseSubscribeService closeSubscribeService;
 
-    @PostMapping("/events/me/{eventId}")
+    @PostMapping("/events/close/me/{eventId}")
     public String closeSubscribe(@AuthenticationPrincipal Member member,
                                  @PathVariable Long eventId){
         return closeSubscribeService.closeSubscribe(member,eventId);
