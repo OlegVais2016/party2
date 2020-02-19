@@ -20,6 +20,7 @@ public class CloseSubscribeServiceImpl implements CloseSubscribeService {
 
     private JavaMailSender emailSender;
 
+
     @Override
     public String closeSubscribe(Member member, Long eventId) {
 
