@@ -4,7 +4,7 @@ import com.example.party2.model.entity.MemberSession;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberSessionRepository extends JpaRepository <MemberSession,Long> {
-    MemberSession findBySessionIdAndAndIsValidTrue(String sessionId);
+    MemberSession findBySessionIdAndIsValidTrue(String sessionId);
 }
 
 

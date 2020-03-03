@@ -12,7 +12,6 @@ import com.example.party2.repository.MemberSessionRepository;
 import com.example.party2.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -71,7 +70,7 @@ public class MemberServiceImpl implements MemberService {
     public void logout(String header) {
 
         MemberSession memberSession = memberSessionRepository
-                .findBySessionIdAndAndIsValidTrue(header);
+                .findBySessionIdAndIsValidTrue(header);
         if(memberSession == null){
             log.warn("Logout call - no session ID found = {}, after passing security filter. Exiting without an error", header);
             throw new AuthenticationException("Username or password is incorrect");

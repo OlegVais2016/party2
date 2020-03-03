@@ -30,9 +30,10 @@ public class SessionIdFilter extends OncePerRequestFilter {
         String header = httpServletRequest.getHeader("Authorization");
         if(header != null){
            MemberSession memberSession =  memberSessionRepository
-                    .findBySessionIdAndAndIsValidTrue(header);
+                    .findBySessionIdAndIsValidTrue(header);
             if(memberSession != null){
-                Authentication authentication = new UsernamePasswordAuthenticationToken(
+                Authentication authentication =
+                        new UsernamePasswordAuthenticationToken(
                         memberSession.getMember(),
                         null,
                         new ArrayList<>()
